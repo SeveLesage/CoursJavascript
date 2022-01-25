@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Cours JS - 07-01 événement</title>
+
+    <style>
+        #rouge {
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+            background-color: red;
+            line-height: 150px;
+            font-size: 2em;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+        
+        #orange {
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+            background-color: orange;
+            line-height: 150px;
+            font-size: 2em;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+        
+        #jaune {
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+            background-color: yellow;
+            line-height: 150px;
+            font-size: 2em;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+        
+        #vert {
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+            background-color: greenyellow;
+            line-height: 150px;
+            font-size: 2em;
+            color: white;
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">Cours JS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Introduction
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="../01-introduction/01-01-introduction.html">Afficher et cacher l'heure</a></li>
+                            <li><a class="dropdown-item" href="../01-introduction/01-02-bouton.html">Actions avec un bouton</a></li>
+                            <li><a class="dropdown-item" href="../01-introduction/01-03-placement.html">Il se place où le JS ?</a></li>
+                            <li><a class="dropdown-item" href="../01-introduction/01-04-fichier-externe.html">un fichier externe</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Variables et constantes
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="../02-variables-constantes/02-01-introduction.html">Les variables</a></li>
+                            <li><a class="dropdown-item" href="../02-variables-constantes/02-02-afficher.html">Exemple de variables</a></li>
+                            <li><a class="dropdown-item" href="../02-variables-constantes/02-03-type.html">Les types de données</a></li>
+                            <li><a class="dropdown-item" href="../02-variables-constantes/02-04-operateurs.html">Les opérateurs arithmétiques</a></li>
+                            <li><a class="dropdown-item" href="../02-variables-constantes/02-05-concatenation.html">La concaténation</a></li>
+                            <li><a class="dropdown-item" href="../02-variables-constantes/02-06-constantes.html">Les constantes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="03-structures-controles/" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Structures de contrôles
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="../03-structures-controles/03-01-introduction.html">Introduction</a></li>
+                            <li><a class="dropdown-item" href="../03-structures-controles/03-02-if.html">If...</a></li>
+                            <li><a class="dropdown-item" href="../03-structures-controles/03-03-if-else.html">If ... else ...</a></li>
+                            <li><a class="dropdown-item" href="../03-structures-controles/03-04-if-elseif-else.html">If... else if ... else...</a></li>
+                            <li><a class="dropdown-item" href="../03-structures-controles/03-05-operateurs-logiques.html">Opérateurs logiques</a></li>
+                            <li><a class="dropdown-item" href="../03-structures-controles/03-06-precedence.html">La précédence</a></li>
+                            <li><a class="dropdown-item" href="../03-structures-controles/03-07-ternaire.html">Le ternaire</a></li>
+                            <li><a class="dropdown-item" href="../03-structures-controles/03-08-switch.html">Switch</a></li>
+                            <li><a class="dropdown-item" href="../03-structures-controles/03-09-boucles.html">Les boucles</a></li>
+                            <li><a class="dropdown-item" href="../03-structures-controles/03-10-for.html">For</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="04-fonctions/" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fonctions</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="04-01-introduction.html">Introduction</a></li>
+                            <li><a class="dropdown-item" href="04-02-portee.html">Portee</a></li>
+                            <li><a class="dropdown-item" href="04-03-var-let.html">Var Let</a></li>
+                            <li><a class="dropdown-item" href="04-04-retour.html">Retour</a></li>
+                            <li><a class="dropdown-item" href="04-05-conclusion-logiques.html">Conclusion</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="05-objet/">Objet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="06-selecteurs/">Sélecteurs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="07-evenements/">Événements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="08-manipulations/">Manipulations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="09-dom/">DOM</a>
+                    </li>
+                </ul>
+                <button class="btn btn-dark"><a href="00-exos/" class="text-white text-decoration-none">Exercices</a></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- mon en-tête -->
+    <div class="px-4 py-5 mb-5 text-center shadow">
+        <img class="d-block mx-auto mb-4" src="../img/logo-JS.png" alt="logo JS" height="57">
+        <h1 class="display-5 fw-bold">Cours Javascript</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Les écouteurs d'événement : addEventListener </p>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <section class="row">
+            <div class="col-8">
+                <h2>Le simple click</h2>
+                <p>Faites un simple click sur le rond rouge</p>
+                <p id="p1" class="rounded-pill">Faites un simple click sur ce passage</p>
+            </div>
+            <div class="col-4">
+                <div id="rouge">#rouge</div>
+            </div>
+        </section>
+
+        <!-- fin premiere rangéé -->
+
+        <section class="row">
+            <div class="col-8">
+                <h2>Le double click</h2>
+                <p>Faites un double click sur le rond rouge</p>
+                <p id="p2" class="rounded-pill">Faites un double click sur ce passage</p>
+            </div>
+            <div class="col-4">
+                <div id="orange">#orange</div>
+            </div>
+        </section>
+
+        <!-- fin 2eme rangéé -->
+
+        <section class="row">
+            <div class="col-8">
+                <h2>Le survol</h2>
+                <p>Survolez le rond jaune</p>
+
+            </div>
+            <div class="col-4">
+                <div id="jaune">#jaune</div>
+            </div>
+        </section>
+
+        <!-- fin 3eme rangéé -->
+
+        <section class="row">
+            <div class="col-8">
+                <h2>Le survol puis départ</h2>
+                <p>Survolez puis arrêtez de survoler le rond vert</p>
+
+            </div>
+            <div class="col-4">
+                <div id="vert">#vert</div>
+            </div>
+        </section>
+
+        <!-- fin 4eme rangéé -->
+
+        <section class="row">
+            <div class="col-5">
+                <h2>Un formulaire</h2>
+                <p>Nous avans pris le formulaire sur <a href="https://getbootstrap.com/docs/5.0/forms/layout/">cette page</a> de bootstratp</p>
+            </div>
+            <div class="col-7 d-flex align-items-center">
+                <form class="row row-cols-lg-auto g-3 align-items-center" action="#" method="POST">
+                    <div class="col-12">
+                        <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
+                        <div class="input-group">
+                            <div class="input-group-text">@</div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+                        <select class="form-select" id="inlineFormSelectPref">
+                        <option selected>Choose...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                            <label class="form-check-label" for="inlineFormCheck">
+                          Remember me
+                        </label>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="introduction.js"></script>
+
+    <script>
+        //evenement fonction
+        //fonction nomméé
+        document.querySelector('#rouge').addEventListener('click', fdivrouge); //selectionner la div par son ID et j'ajoute un écouteur d'événement qui s'éxécute au moment ou ma fonction est lancee addeven.. a besoin
+        //de deux arguments pour fonctionner = le mot clef correspondant (click / dblclick / etc..) et 2 le nom de la fonction est nomméé ou le debut de ma fonction si elle est
+
+        document.querySelector('#rouge').style.cursor = "pointer";
+
+        function fdivrouge() {
+            //alert('coucou, tu as cliquer sur moi');
+            this.style.background = "gold";
+            this.innerHTML = '#gold';
+            this.style.borderRadius = "15%";
+            this.style.textTransform = "uppercase"
+        }
+
+        //fonction anonyme
+        document.querySelector('#p1').addEventListener('click', function() {
+            this.style.background = "gold";
+            this.innerHTML = "Je suis devenu doré";
+            this.style.textAlign = "center";
+        })
+
+        //faire la meme chose double click
+
+        document.querySelector('#orange').addEventListener('dblclick', fdivorange); //selectionner la div par son ID et j'ajoute un écouteur d'événement qui s'éxécute au moment ou ma fonction est lancee addeven.. a besoin
+        //de deux arguments pour fonctionner = le mot clef correspondant (click / dblclick / etc..) et 2 le nom de la fonction est nomméé ou le debut de ma fonction si elle est
+
+        document.querySelector('#orange').style.cursor = "pointer";
+
+        function fdivorange() {
+            //alert('coucou, tu as cliquer sur moi');
+            this.style.background = "gold";
+            this.innerHTML = '#gold';
+            this.style.borderRadius = "15%";
+            this.style.textTransform = "uppercase"
+        }
+
+        document.querySelector('#p2').addEventListener('dblclick', function() {
+            this.style.background = "gold";
+            this.innerHTML = "Je suis devenu doré";
+            this.style.textAlign = "center";
+        })
+
+        //version avec declaration variable
+        //let maDivOrange = document.querySelector('#orange');
+        //maDivOrange.style.cursor = "pointer";
+        //maDivOrange.addEventListener('dblclick', fdivorange);
+        //function fdivorange() {
+        //alert('coucou, tu as cliquer sur moi');
+        // this.style.background = "gold";
+        //this.innerHTML = '#gold';
+        //this.style.borderRadius = "15%";
+        // this.style.textTransform = "uppercase"
+        //}
+
+
+        document.querySelector('#jaune').addEventListener('mouseover', fdivjaune); //selectionner la div par son ID et j'ajoute un écouteur d'événement qui s'éxécute au moment ou ma fonction est lancee addeven.. a besoin
+        //de deux arguments pour fonctionner = le mot clef correspondant (click / dblclick / etc..) et 2 le nom de la fonction est nomméé ou le debut de ma fonction si elle est
+
+        document.querySelector('#jaune').style.cursor = "pointer";
+
+        function fdivjaune() {
+            //alert('coucou, tu as cliquer sur moi');
+            this.style.background = "gold";
+            this.innerHTML = '#gold';
+            this.style.borderRadius = "15%";
+            this.style.textTransform = "uppercase"
+        }
+
+        //cacher la div vert lorsque que l'on survol plus
+
+        document.querySelector('#vert').addEventListener('mouseout', fdivVert); //selectionner la div par son ID et j'ajoute un écouteur d'événement qui s'éxécute au moment ou ma fonction est lancee addeven.. a besoin
+        //de deux arguments pour fonctionner = le mot clef correspondant (click / dblclick / etc..) et 2 le nom de la fonction est nomméé ou le debut de ma fonction si elle est
+
+        document.querySelector('#vert').style.cursor = "pointer";
+
+        function fdivVert() {
+            //alert('coucou, tu as cliquer sur moi');
+            this.style.display = "none";
+
+        }
+
+        document.querySelector("#submit").addEventListener('click', btnSubmit);
+
+        function btnSubmit(event) {
+            event.preventDefault(); //neutralise le formulaire pour quand on développe le site
+            this.classList.add('alert', 'alert- success');
+            this.innerHTML = "Vous etes connecté.e !"
+        }
+    </script>
+</body>
+
+</html>
